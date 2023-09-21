@@ -1,4 +1,6 @@
-﻿namespace algorithm_problems.leetcode.Arrays_Hashing
+﻿using algorithm_problems.core;
+
+namespace algorithm_problems.leetcode.Arrays_Hashing
 {
     public class _49GroupAnagrams
     {
