@@ -8,29 +8,26 @@
             return string.Concat(strs.SelectMany(s => $"{s.Length}#{s}"));
         }
 
-        public List<string> decode(string str)
+        public List<string> decode(string s)
         {
-            List<string> result = new();
-            bool eol = false;
-            string text = String.Empty;
-            //result = str.Split('☼').ToList();
+            var res = new List<string>();
 
-            foreach (var i in str)
+            var i = 0;
+            while (i < s.Length)
             {
-                if (i == ';' && eol)
+                var j = i;
+                while (s[j] != '#')
                 {
-                    result.Add(text);
-                    text = String.Empty;
-                    eol = false;
+                    ++j;
                 }
-                else
-                {
-                    text += i;
-                    eol = true;
-                }
+
+                int.TryParse(s.Substring(i, j - i), out var len);
+                j++;
+                res.Add(s.Substring(j, len));
+                i = j + len;
             }
 
-            return result;
+            return res;
         }
     }
 }
